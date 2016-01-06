@@ -11,6 +11,18 @@
                 width: 200px;
                 height: 150px;
             }
+            #remotes {
+                width: 50%;
+                height: 350px;
+            }
+            #remotes .videoContainer {
+                float: left;
+            }
+            #chat {
+                float: left;
+                width: 40%;
+                height: 350px;
+            }
             .videoContainer video {
                 position: absolute;
                 width: 100%;
@@ -35,8 +47,11 @@
             <video id="localVideo" style="height: 150px;" oncontextmenu="return false;"></video>
             <div id="localVolume" class="volume_bar"></div>
         </div>
-        <div id="remotes"></div>
-        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+        <div>
+            <div id="remotes"></div>
+            <div id="chat"></div>
+        </div>
+        <script src="/jquery-1.9.0.min.js"></script>
         <script src="simplewebrtc.bundle.js"></script>
         <script>
             // grab the room from the URL
@@ -44,6 +59,7 @@
 
             // create our webrtc connection
             var webrtc = new SimpleWebRTC({
+                url: 'http://localhost:8001/',
                 // the id/element dom element that will hold "our" video
                 localVideoEl: 'localVideo',
                 // the id/element dom element that will hold remote videos
